@@ -7,6 +7,7 @@ require {
     type zabbix_agent_t;
     type system_dbusd_t;
     type systemd_unit_file_t;
+    type httpd_unit_file_t;
     class sock_file write;
     class unix_stream_socket connectto;
     class dbus send_msg;
@@ -25,3 +26,4 @@ allow zabbix_agent_t system_dbusd_t:unix_stream_socket connectto;
 allow zabbix_agent_t system_dbusd_var_run_t:sock_file write;
 allow zabbix_agent_t systemd_systemctl_exec_t:file { execute execute_no_trans };
 allow zabbix_agent_t systemd_unit_file_t:service status;
+allow zabbix_agent_t httpd_unit_file_t:service status;
