@@ -1,0 +1,21 @@
+
+module zabbix-agent 1.0;
+
+require {
+	type systemd_logind_t;
+	type user_tmp_t;
+	type zabbix_agent_t;
+	type proc_net_t;
+	class file read;
+	class file open;
+	class process setrlimit;
+	class dir mounton;
+}
+
+#============= systemd_logind_t ==============
+allow systemd_logind_t user_tmp_t:dir mounton;
+
+#============= zabbix_agent_t ==============
+allow zabbix_agent_t self:process setrlimit;
+allow zabbix_agent_t proc_net_t:file read;
+allow zabbix_agent_t proc_net_t:file open;

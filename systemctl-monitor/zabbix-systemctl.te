@@ -1,0 +1,27 @@
+module zabbix-systemctl 1.0;
+require {
+    type cgroup_t;
+    type system_dbusd_var_run_t;
+    type init_t;
+    type systemd_systemctl_exec_t;
+    type zabbix_agent_t;
+    type system_dbusd_t;
+    type systemd_unit_file_t;
+    class sock_file write;
+    class unix_stream_socket connectto;
+    class dbus send_msg;
+    class file { read execute open execute_no_trans };
+    class service status;
+}
+
+#============= init_t ==============
+allow init_t zabbix_agent_t:dbus send_msg;
+
+#============= zabbix_agent_t ==============
+allow zabbix_agent_t cgroup_t:file { read open };
+allow zabbix_agent_t init_t:dbus send_msg;
+allow zabbix_agent_t system_dbusd_t:dbus send_msg;
+allow zabbix_agent_t system_dbusd_t:unix_stream_socket connectto;
+allow zabbix_agent_t system_dbusd_var_run_t:sock_file write;
+allow zabbix_agent_t systemd_systemctl_exec_t:file { execute execute_no_trans };
+allow zabbix_agent_t systemd_unit_file_t:service status;
