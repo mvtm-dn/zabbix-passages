@@ -55,6 +55,7 @@ Import ```APC_UPSD_Linux.xml``` into your zabbix server.
 
 ### Template triggers
 Template provide a set of triggers
+
 | Description | Severinity | Event |
 | ------------------------------ | ----------- | ------------------------------ |
 | UPS initiated system shutdown | Disaster | **apcuspd.status**=='SHUTTING' |
@@ -91,6 +92,7 @@ Import ```synology_5_ups.xml``` into your zabbix server.
 | UPS_TIME_LEFT | 180 |
 ### Template triggers
 Template provide a set of triggers
+
 | Description | Severinity | Event |
 | ------------------------------ | ----------- | ------------------------------ |
 | Empty battary | High | **syno.ups.battary.charge[*]**==**syno.ups.battary.chargelow[*]** |
