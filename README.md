@@ -40,7 +40,7 @@ Import ```APC_UPSD_Linux.xml``` into your zabbix server.
 
 ### Avialable keys
 | Key | Description |
-| ------------------------------ | ----------- |
+| ----------- | ------------------------------ |
 | **apcupsd.status** | Return status of APC UPS. One of the following: _CAL_ _TRIM_ _BOOST_ _ONLINE_ _ONBATT_ _OVERLOAD_ _LOWBATT_ _REPLACEBATT_ _NOBATT_ _SLAVE_ _SLAVEDOWN_ _COMLOST_ _SHUTTING_ |
 | **apcupsd.name** | UPS name from configuration file for dumb upses or eprom for smart |
 | **apcupsd.model** | UPS model from ups information |
@@ -56,7 +56,7 @@ Import ```APC_UPSD_Linux.xml``` into your zabbix server.
 ### Template triggers
 Template provide a set of triggers
 | Description | Severinity | Event |
-| ------------------------------ | ----------- |
+| ------------------------------ | ----------- | ------------------------------ |
 | UPS initiated system shutdown | Disaster | **apcuspd.status**=='SHUTTING' |
 | Low estimation on battarey | High | **apcupsd.status**=='ONBATT' and (**apcupsd.batt.charge**<20 or **apcupsd.timeleft**<3) |
 | Lost connection with UPS | High | **apcupsd.status**='COMLOST' |
@@ -71,7 +71,7 @@ Import ```synology_5_ups.xml``` into your zabbix server.
 
 ### Avialable keys
 | Key | Description |
-| ------------------------------ | ----------- |
+| ----------- | ------------------------------ |
 | **syno.ups.battary.charge[*]** | UPS battary charge  |
 | **syno.ups.battary.chargelow[*]** | Low battary charge level from ups driver settings  |
 | **syno.ups.battary.chargewarning[*]** | Warning battary charge level from ups driver settings  |
@@ -87,11 +87,12 @@ Import ```synology_5_ups.xml``` into your zabbix server.
 
 ### Template macros
 | Name | Value |
+| ----------- | ------------------------------ |
 | UPS_TIME_LEFT | 180 |
 ### Template triggers
 Template provide a set of triggers
 | Description | Severinity | Event |
-| ------------------------------ | ----------- |
+| ------------------------------ | ----------- | ------------------------------ |
 | Empty battary | High | **syno.ups.battary.charge[*]**==**syno.ups.battary.chargelow[*]** |
 | Almost no time left on battary | High | **syno.ups.timeleft[*]**<${UPS_TIME_LEFT} |
 | Low battary | Average | **syno.ups.battary.charge[*]**==**syno.ups.battary.chargewarning[*]** |
